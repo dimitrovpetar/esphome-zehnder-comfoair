@@ -4,6 +4,7 @@ climate:
     id: comfoair_climate
     sensor: extract_air_temp
     icon: mdi:air-filter
+    internal: true
     visual:
       min_temperature: 18
       max_temperature: 25

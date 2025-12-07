@@ -3,6 +3,9 @@ switch:
     name: "Auto Ventilation"
     id: auto_ventilation
     icon: mdi:toggle-switch
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 1
     turn_on_action:
       # if boost is on, turn it off first
       - if:
@@ -49,6 +52,9 @@ switch:
     name: "Away Mode"
     id: away_mode
     icon: mdi:airplane
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 2
     turn_on_action:
       - lambda: id(comfoair)->set_away(true);
       - delay: 1s

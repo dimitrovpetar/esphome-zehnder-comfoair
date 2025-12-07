@@ -3,30 +3,42 @@ sensor:
     name: "WiFi Signal"
     update_interval: 60s
     icon: mdi:wifi
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 5
 
   - platform: uptime
     name: "Uptime"
     update_interval: 60s
     icon: mdi:clock-outline
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 4
 
 binary_sensor:
   - platform: status
     name: "Status"
+    internal: true
 
 text_sensor:
   - platform: version
     name: "Version"
     icon: mdi:cube-outline
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 3
   - platform: wifi_info
     ip_address:
       name: "IP Address"
-
-time:
-  - platform: homeassistant
-    id: homeassistant_time
+      web_server:
+        sorting_group_id: sorting_group_wifi_module
+        sorting_weight: 2
 
 button:
   - platform: restart
     name: Restart
     icon: mdi:restart
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 1
     entity_category: diagnostic

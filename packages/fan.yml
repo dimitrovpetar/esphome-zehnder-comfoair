@@ -3,6 +3,7 @@ fan:
     name: 'Fan'
     id: "comfoair_fan"
     icon: mdi:air-filter
+    internal: true
     output: comfoair_fan_output
     speed_count: 3
     # restore_mode: RESTORE_DEFAULT_ON

@@ -1,7 +1,7 @@
 substitutions:
-  friendly_name: Zehnder ComfoAir Q
+  friendly_name: Zehnder ComfoAir Q350
   device_name: zehnder-comfoair-q
-  device_description: Zehnder ComfoAir Q HRV (heat recovery ventilation) unit
+  device_description: Zehnder ComfoAir Q350
   filter_time: 5s
   filter_send_every: "1"
   filter_window_size: "3"
@@ -21,42 +21,59 @@ packages:
 
 esphome:
   name: ${device_name}
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
   friendly_name: ${friendly_name}
-  comment: ${device_description}
+#  comment: ${device_description}
   project:
     name: yoziru.esphome-zehnder-comfoair
     version: "2024.8.0"
 
 logger:
-  level: INFO
-  logs:
-    canbus: INFO
-
-api:
-  encryption:
-    key: !secret api_encryption_key
-
+  level: WARN
+    
 ota:
-  platform: esphome
-  password: !secret ota_password
+  - platform: web_server
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  reboot_timeout: 0s
   enable_rrm: true
   enable_btm: true
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    password: !secret wifi_hotspot_password
-
-captive_portal:
-improv_serial:
+  fast_connect: true
 
 web_server:
   port: 80
-  ota: false
-  local: true
+  version: 3
+  sorting_groups:
+    - id: sorting_group_control
+      name: "Control"
+      sorting_weight: 1
+    - id: sorting_group_boost
+      name: "Boost"
+      sorting_weight: 2
+    - id: sorting_group_bypass
+      name: "Bypass"
+      sorting_weight: 3
+    - id: sorting_group_humidity
+      name: "Humidity"
+      sorting_weight: 4
+    - id: sorting_group_temperature
+      name: "Temperature"
+      sorting_weight: 5
+    - id: sorting_group_energy
+      name: "Energy"
+      sorting_weight: 6
+    - id: sorting_group_sensors
+      name: "Sensors"
+      sorting_weight: 7
+    - id: sorting_group_wifi_module
+      name: "WiFi Module"
+      sorting_weight: 8
+    
+  auth:
+    username: !secret user
+    password: !secret pass
 
 # See docs: https://github.com/michaelarnauts/aiocomfoconnect/blob/master/docs/PROTOCOL-PDO.md
 zehnder_comfoair_q:

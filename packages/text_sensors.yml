@@ -3,6 +3,9 @@ text_sensor:
     id: fan_level # PDO 65 (raw)
     name: "Fan Level"
     icon: mdi:fan
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 3
     filters:
       - map:
           - 0 -> Away
@@ -16,6 +19,9 @@ text_sensor:
   - platform: template
     id: operating_mode # PDO 49
     name: "Operating Mode"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 1
     filters:
       - map:
           - 1 -> Manual (limited)
@@ -46,6 +52,9 @@ text_sensor:
     id: supply_fan_mode # PDO 54
     name: "Supply Fan Mode"
     icon: mdi:home-import-outline
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 11
     filters:
       - map:
           - 1 -> Supply Only
@@ -67,6 +76,9 @@ text_sensor:
     id: exhaust_fan_mode # PDO 55
     name: "Exhaust Fan Mode"
     icon: mdi:home-export-outline
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 12
     filters:
       - map:
           - 1 -> Exhaust Only
@@ -88,13 +100,19 @@ text_sensor:
     id: balance_mode # PDO 55
     name: "Balance Mode"
     icon: mdi:arrow-split-vertical
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 5
     on_value:
       then:
         - lambda: id(balance_mode_select).publish_state(x);
 
   - platform: template
     id: bypass_activation_mode # PDO 66
-    name: "Bypass Activation Mode"
+    name: "Bypass Mode"
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 2
     filters:
       - map:
           - 0 -> Auto
@@ -104,6 +122,9 @@ text_sensor:
   - platform: template
     id: temperature_profile # PDO 67
     name: "Temperature Profile"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 6
     filters:
       - map:
           - 0 -> Normal
@@ -115,15 +136,24 @@ text_sensor:
 
   - platform: template
     id: next_fan_change_in # PDO 81 (raw)
-    name: "Next Fan Change In"
+    name: "Fan Change In"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 10
 
   - platform: template
     id: next_bypass_change_in # PDO 81 (raw)
-    name: "Next Bypass Change In"
+    name: "Bypass Change In"
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 3
 
   - platform: template
     id: ventilation_mode # PDO 225
     name: "Ventilation Mode"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 2
     filters:
       - map:
           - 0 -> Disabled
