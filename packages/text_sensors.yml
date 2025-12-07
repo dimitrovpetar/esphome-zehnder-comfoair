@@ -159,3 +159,23 @@ text_sensor:
           - 0 -> Disabled
           - 1 -> Active
           - 2 -> Overruling
+
+  - platform: template
+    name: "Last Reboot Reason"
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 5
+    lambda: |-
+      
+      switch(id(last_reboot_reason)) {
+        case ESP_RST_POWERON: return {"Power-On Reset"};
+        case ESP_RST_EXT: return {"Reset Pin"};
+        case ESP_RST_SW: return {"Software Reset"};
+        case ESP_RST_PANIC: return {"Panic / Crash"};
+        case ESP_RST_INT_WDT: return {"Interrupt WDT"};
+        case ESP_RST_TASK_WDT: return {"Task WDT"};
+        case ESP_RST_WDT: return {"Other Watchdog"};
+        case ESP_RST_DEEPSLEEP: return {"Deep Sleep Wake"};
+        case ESP_RST_BROWNOUT: return {"Brownout / Low Voltage"};
+        default: return {"Unknown: " + std::to_string(id(last_reboot_reason))};
+      }

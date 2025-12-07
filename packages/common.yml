@@ -1,12 +1,4 @@
 sensor:
-  - platform: wifi_signal
-    name: "WiFi Signal"
-    update_interval: 60s
-    icon: mdi:wifi
-    web_server:
-      sorting_group_id: sorting_group_wifi_module
-      sorting_weight: 5
-
   - platform: uptime
     name: "Uptime"
     update_interval: 60s
@@ -14,11 +6,6 @@ sensor:
     web_server:
       sorting_group_id: sorting_group_wifi_module
       sorting_weight: 4
-
-binary_sensor:
-  - platform: status
-    name: "Status"
-    internal: true
 
 text_sensor:
   - platform: version

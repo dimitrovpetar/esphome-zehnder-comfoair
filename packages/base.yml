@@ -11,7 +11,6 @@ packages:
   board: !include board.yml
   button: !include button.yml
   canbus: !include canbus.yml
-  climate: !include climate.yml
   common: !include common.yml
   fan: !include fan.yml
   select: !include select.yml
@@ -27,9 +26,15 @@ esphome:
   project:
     name: yoziru.esphome-zehnder-comfoair
     version: "2024.8.0"
+  on_boot:
+    priority: -200
+    then:
+      - lambda: |-
+          id(last_reboot_reason) = esp_reset_reason();
+          ESP_LOGE("boot", "Reboot reason saved: %d", id(last_reboot_reason));
 
 logger:
-  level: WARN
+  level: VERY_VERBOSE
     
 ota:
   - platform: web_server
@@ -74,6 +79,12 @@ web_server:
   auth:
     username: !secret user
     password: !secret pass
+
+globals:
+  - id: last_reboot_reason
+    type: int
+    restore_value: yes
+    initial_value: '-1'
 
 # See docs: https://github.com/michaelarnauts/aiocomfoconnect/blob/master/docs/PROTOCOL-PDO.md
 zehnder_comfoair_q:
