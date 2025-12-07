@@ -34,7 +34,7 @@ esphome:
           ESP_LOGE("boot", "Reboot reason saved: %d", id(last_reboot_reason));
 
 logger:
-  level: VERY_VERBOSE
+  level: WARN
     
 ota:
   - platform: web_server
@@ -42,7 +42,6 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-  reboot_timeout: 0s
   enable_rrm: true
   enable_btm: true
   fast_connect: true
@@ -75,7 +74,6 @@ web_server:
     - id: sorting_group_wifi_module
       name: "WiFi Module"
       sorting_weight: 8
-    
   auth:
     username: !secret user
     password: !secret pass
