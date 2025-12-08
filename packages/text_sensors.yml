@@ -164,7 +164,7 @@ text_sensor:
     name: "Last Reboot Reason"
     web_server:
       sorting_group_id: sorting_group_wifi_module
-      sorting_weight: 5
+      sorting_weight: 6
     lambda: |-
       
       switch(id(last_reboot_reason)) {
