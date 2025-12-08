@@ -430,3 +430,25 @@ sensor:
     unit_of_measurement: "%"
     device_class: humidity
     state_class: measurement
+
+  - platform: debug
+    free:
+      name: "Heap Free"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 3
+    block:
+      name: "Heap Max Block"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 4
+    loop_time:
+      name: "Loop Time"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 5
+    cpu_frequency:
+      name: "CPU Frequency"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 6

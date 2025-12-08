@@ -26,12 +26,9 @@ esphome:
   project:
     name: yoziru.esphome-zehnder-comfoair
     version: "2024.8.0"
-  on_boot:
-    priority: -200
-    then:
-      - lambda: |-
-          id(last_reboot_reason) = esp_reset_reason();
-          ESP_LOGE("boot", "Reboot reason saved: %d", id(last_reboot_reason));
+
+debug:
+  update_interval: 5s
 
 logger:
   level: WARN
@@ -74,15 +71,12 @@ web_server:
     - id: sorting_group_wifi_module
       name: "WiFi Module"
       sorting_weight: 8
+    - id: sorting_group_debug
+      name: "Debug"
+      sorting_weight: 9
   auth:
     username: !secret user
     password: !secret pass
-
-globals:
-  - id: last_reboot_reason
-    type: int
-    restore_value: yes
-    initial_value: '-1'
 
 # See docs: https://github.com/michaelarnauts/aiocomfoconnect/blob/master/docs/PROTOCOL-PDO.md
 zehnder_comfoair_q:
