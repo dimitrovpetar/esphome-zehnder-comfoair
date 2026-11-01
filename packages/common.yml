@@ -13,6 +13,13 @@ sensor:
       sorting_group_id: sorting_group_wifi_module
       sorting_weight: 4
 
+binary_sensor:
+  - platform: status
+    name: "Status"
+    web_server:
+      sorting_group_id: sorting_group_wifi_module
+      sorting_weight: 6
+
 text_sensor:
   - platform: version
     name: "Version"
@@ -20,6 +27,7 @@ text_sensor:
     web_server:
       sorting_group_id: sorting_group_wifi_module
       sorting_weight: 3
+
   - platform: wifi_info
     ip_address:
       name: "IP Address"
