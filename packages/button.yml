@@ -2,53 +2,80 @@ button:
   - platform: template
     name: "Boost (15 min)"
     icon: mdi:fast-forward-15
+    web_server:
+      sorting_group_id: sorting_group_boost
+      sorting_weight: 1
     on_press:
       - lambda: id(comfoair)->set_boost(15 * 60);
 
   - platform: template
     name: "Boost (60 min)"
     icon: mdi:fast-forward-60
+    web_server:
+      sorting_group_id: sorting_group_boost
+      sorting_weight: 2
     on_press:
       - lambda: id(comfoair)->set_boost(60 * 60);
 
   - platform: template
     name: "Boost (3h)"
     icon: mdi:numeric-3-circle
+    web_server:
+      sorting_group_id: sorting_group_boost
+      sorting_weight: 3
     on_press:
       - lambda: id(comfoair)->set_boost(3 * 60 * 60);
 
   - platform: template
     name: "Boost (12h)"
     icon: mdi:dice-d12
+    web_server:
+      sorting_group_id: sorting_group_boost
+      sorting_weight: 4
     on_press:
       - lambda: id(comfoair)->set_boost(12 * 60 * 60);
 
   - platform: template
     name: "Boost off"
     icon: mdi:stop
+    web_server:
+      sorting_group_id: sorting_group_boost
+      sorting_weight: 5
     on_press:
       - lambda: id(comfoair)->set_boost(0);
 
   - platform: template
     name: "Bypass On (1h)"
     icon: mdi:fan-chevron-up
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 4
     on_press:
       - lambda: id(comfoair)->set_bypass_mode(zehnder_comfoair_q::BYPASS_ACTIVATE, 60 * 60);
 
   - platform: template
     name: "Bypass On (12h)"
     icon: mdi:dice-d12
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 5
     on_press:
       - lambda: id(comfoair)->set_bypass_mode(zehnder_comfoair_q::BYPASS_ACTIVATE, 12 * 60 * 60);
 
   - platform: template
     name: "Bypass Auto"
     icon: mdi:fan-auto
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 6
     on_press:
       - lambda: id(comfoair)->set_bypass_mode(zehnder_comfoair_q::BYPASS_AUTO, 0);
 
   - platform: template
     name: "Bypass Off (1h)"
     icon: mdi:fan-chevron-down
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 7
     on_press:
       - lambda: id(comfoair)->set_bypass_mode(zehnder_comfoair_q::BYPASS_DEACTIVATE, 60 * 60);

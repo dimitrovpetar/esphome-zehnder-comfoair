@@ -69,6 +69,9 @@ sensor:
   - platform: template
     id: exhaust_fan_duty # PDO 117
     name: "Exhaust Fan Duty"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 16
     accuracy_decimals: 0
     unit_of_measurement: "%"
     state_class: measurement
@@ -77,6 +80,9 @@ sensor:
   - platform: template
     id: supply_fan_duty # PDO 118
     name: "Supply Fan Duty"
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 15
     accuracy_decimals: 0
     unit_of_measurement: "%"
     state_class: measurement
@@ -86,6 +92,9 @@ sensor:
     id: supply_fan_flow # PDO 119
     name: "Supply Fan Flow"
     icon: mdi:gauge
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 5
     accuracy_decimals: 0
     unit_of_measurement: "m³/h"
     state_class: measurement
@@ -95,6 +104,9 @@ sensor:
     id: exhaust_fan_flow # PDO 120
     name: "Exhaust Fan Flow"
     icon: mdi:gauge
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 6
     accuracy_decimals: 0
     unit_of_measurement: "m³/h"
     state_class: measurement
@@ -104,6 +116,9 @@ sensor:
     id: exhaust_fan_speed # PDO 121
     name: "Exhaust Fan Speed"
     icon: mdi:speedometer
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 14
     accuracy_decimals: 0
     unit_of_measurement: "rpm"
     state_class: measurement
@@ -113,6 +128,9 @@ sensor:
     id: supply_fan_speed # PDO 122
     name: "Supply Fan Speed"
     icon: mdi:speedometer
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 13
     accuracy_decimals: 0
     unit_of_measurement: "rpm"
     state_class: measurement
@@ -121,6 +139,9 @@ sensor:
   - platform: template
     id: power # PDO 128
     name: "Power"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 1
     accuracy_decimals: 0
     unit_of_measurement: "W"
     device_class: power
@@ -130,6 +151,9 @@ sensor:
   - platform: template
     id: energy_ytd # PDO 129
     name: "Energy YTD"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 2
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -137,7 +161,10 @@ sensor:
 
   - platform: template
     id: energy_since_start # PDO 130
-    name: "Energy Since Start"
+    name: "Energy Total"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 3
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -145,14 +172,18 @@ sensor:
 
   - platform: template
     id: filter_replacement_remaining_days # PDO 192
-    name: "Filter Replacement Remaining Days"
+    name: "Filter Replacement"
     icon: mdi:air-filter
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 9
     accuracy_decimals: 0
     unit_of_measurement: "days"
 
   - platform: template
     id: running_mean_outdoor_temp # PDO 209
     name: "Running Mean Outdoor Temperature"
+    internal: true
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -175,7 +206,10 @@ sensor:
 
   - platform: template
     id: profile_target_temp # PDO 212
-    name: "Profile Target Temperature"
+    name: "Profile Target"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 7
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -184,7 +218,10 @@ sensor:
 
   - platform: template
     id: avoided_heating_actual # PDO 213
-    name: "Avoided Heating Actual"
+    name: "Saved Heating"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 4
     filters: *throttle-filter-e-3
     accuracy_decimals: 3
     unit_of_measurement: "kW"
@@ -193,7 +230,10 @@ sensor:
 
   - platform: template
     id: avoided_heating_ytd # PDO 214
-    name: "Avoided Heating YTD"
+    name: "Saved Heating YTD"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 5
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -201,7 +241,10 @@ sensor:
 
   - platform: template
     id: avoided_heating_total # PDO 215
-    name: "Avoided Heating Total"
+    name: "Saved Heating Total"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 6
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -209,7 +252,10 @@ sensor:
 
   - platform: template
     id: avoided_cooling_actual # PDO 216
-    name: "Avoided Cooling Actual"
+    name: "Saved Cooling"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 7
     filters: *throttle-filter-e-3
     accuracy_decimals: 3
     unit_of_measurement: "kW"
@@ -218,7 +264,10 @@ sensor:
 
   - platform: template
     id: avoided_cooling_ytd # PDO 217
-    name: "Avoided Cooling YTD"
+    name: "Saved Cooling YTD"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 8
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -226,7 +275,10 @@ sensor:
 
   - platform: template
     id: avoided_cooling_total # PDO 218
-    name: "Avoided Cooling Total"
+    name: "Saved Cooling Total"
+    web_server:
+      sorting_group_id: sorting_group_energy
+      sorting_weight: 9
     accuracy_decimals: 0
     unit_of_measurement: "kWh"
     device_class: energy
@@ -235,6 +287,7 @@ sensor:
   - platform: template
     id: pre_heater_temp_before # PDO 220
     name: "Pre-heater Temperature Before"
+    internal: true
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -244,6 +297,7 @@ sensor:
   - platform: template
     id: post_heater_temp_after # PDO 221
     name: "Post-heater Temperature After"
+    internal: true
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -253,13 +307,19 @@ sensor:
   - platform: template
     id: bypass_state # PDO 227
     name: "Bypass State"
+    web_server:
+      sorting_group_id: sorting_group_bypass
+      sorting_weight: 1
     accuracy_decimals: 0
     unit_of_measurement: "%"
     state_class: measurement
 
   - platform: template
     id: extract_air_temp # PDO 274
-    name: "Extract Air Temperature"
+    name: "Extract Air Temp"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 1
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -268,7 +328,10 @@ sensor:
 
   - platform: template
     id: exhaust_air_temp # PDO 275
-    name: "Exhaust Air Temperature"
+    name: "Exhaust Air Temp"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 4
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -277,7 +340,10 @@ sensor:
 
   - platform: template
     id: outdoor_air_temp # PDO 276
-    name: "Outdoor Air Temperature"
+    name: "Outdoor Air Temp"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 3
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -287,6 +353,7 @@ sensor:
   - platform: template
     id: pre_heater_temp_after # PDO 277, after ComfoFond/GHE
     name: "Pre-heater Temp After"
+    internal: true
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -295,7 +362,10 @@ sensor:
 
   - platform: template
     id: supply_air_temp # PDO 278
-    name: "Supply Air Temperature"
+    name: "Supply Air Temp"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 2
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
@@ -304,7 +374,10 @@ sensor:
 
   - platform: template
     id: extract_air_humidity # PDO 290
-    name: "Extract Air Humidity"
+    name: "Extract Air Hum"
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 1
     accuracy_decimals: 0
     unit_of_measurement: "%"
     device_class: humidity
@@ -312,7 +385,10 @@ sensor:
 
   - platform: template
     id: exhaust_air_humidity # PDO 291
-    name: "Exhaust Air Humidity"
+    name: "Exhaust Air Hum"
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 4
     accuracy_decimals: 0
     unit_of_measurement: "%"
     device_class: humidity
@@ -320,7 +396,10 @@ sensor:
 
   - platform: template
     id: outdoor_air_humidity # PDO 292, is this really still correct with ComfoFond/GHE installed?
-    name: "Outdoor Air Humidity"
+    name: "Outdoor Air Hum"
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 3
     accuracy_decimals: 0
     unit_of_measurement: "%"
     device_class: humidity
@@ -329,6 +408,7 @@ sensor:
   - platform: template
     id: pre_heater_humidity_after # PDO 293
     name: "Pre-heater Humidity After"
+    internal: true
     accuracy_decimals: 0
     unit_of_measurement: "%"
     device_class: humidity
@@ -336,8 +416,33 @@ sensor:
 
   - platform: template
     id: supply_air_humidity # PDO 294
-    name: "Supply Air Humidity"
+    name: "Supply Air Hum"
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 2
     accuracy_decimals: 0
     unit_of_measurement: "%"
     device_class: humidity
     state_class: measurement
+
+  - platform: debug
+    free:
+      name: "Heap Free"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 3
+    block:
+      name: "Heap Max Block"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 4
+    loop_time:
+      name: "Loop Time"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 5
+    cpu_frequency:
+      name: "CPU Frequency"
+      web_server:
+        sorting_group_id: sorting_group_debug
+        sorting_weight: 6

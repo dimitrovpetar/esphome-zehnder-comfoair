@@ -5,6 +5,9 @@ switch:
     icon: mdi:toggle-switch
     # The unit owns this state; restoring OFF would send a manual-mode command.
     restore_mode: DISABLED
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 1
     turn_on_action:
       # if boost is on, turn it off first
       - if:
@@ -54,6 +57,9 @@ switch:
     id: away_mode
     icon: mdi:airplane
     restore_mode: DISABLED
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 2
     turn_on_action:
       - lambda: id(comfoair)->set_away(true);
       - delay: 1s

@@ -3,6 +3,9 @@ select:
     name: 'Fan Speed'
     id: fan_level_select
     icon: mdi:fan
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 3
     options:
      - Away
      - Low
@@ -28,9 +31,12 @@ select:
               }
 
   - platform: template
-    name: 'Temperature Profile'
+    name: 'Profile'
     id: temperature_profile_select
     icon: mdi:thermometer
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 6
     options:
      - "Normal"
      - "Cool"
@@ -53,9 +59,12 @@ select:
                 }
 
   - platform: template
-    name: 'Temperature Passive'
+    name: 'Passive'
     id: temperature_passive_select
     icon: mdi:thermometer-minus
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 5
     options:
      - "On"
      - "Auto only"
@@ -74,9 +83,12 @@ select:
           }
 
   - platform: template
-    name: 'Humidity Comfort'
+    name: 'Comfort'
     id: humidity_comfort_select
     icon: mdi:water-percent
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 6
     options:
      - "On"
      - "Auto only"
@@ -94,9 +106,12 @@ select:
           }
           
   - platform: template
-    name: 'Humidity Protection'
+    name: 'Protection'
     id: humidity_protection_select
     icon: mdi:water-percent
+    web_server:
+      sorting_group_id: sorting_group_humidity
+      sorting_weight: 5
     options:
      - "On"
      - "Auto only"
@@ -116,6 +131,9 @@ select:
     name: 'Balance mode'
     id: balance_mode_select
     icon: mdi:arrow-split-vertical
+    web_server:
+      sorting_group_id: sorting_group_control
+      sorting_weight: 4
     options:
      - "Balanced"
      - "Supply Only"

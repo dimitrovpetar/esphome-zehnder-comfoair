@@ -3,6 +3,9 @@ binary_sensor:
     id: away_indicator # PDO 16 (raw)
     name: "Away Indicator"
     icon: mdi:airplane
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 4
     on_press:
       then:
         - switch.template.publish:
@@ -18,8 +21,14 @@ binary_sensor:
     id: heating_season # PDO 210 (raw)
     name: "Heating Season"
     icon: mdi:snowflake-thermometer
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 7
 
   - platform: template
     id: cooling_season # PDO 211 (raw)
     name: "Cooling Season"
     icon: mdi:sun-thermometer
+    web_server:
+      sorting_group_id: sorting_group_sensors
+      sorting_weight: 8
