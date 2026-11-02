@@ -182,8 +182,10 @@ sensor:
 
   - platform: template
     id: running_mean_outdoor_temp # PDO 209
-    name: "Running Mean Outdoor Temperature"
-    internal: true
+    name: "Outdoor Avg Temp"
+    web_server:
+      sorting_group_id: sorting_group_temperature
+      sorting_weight: 8
     filters: [multiply: 0.1]
     accuracy_decimals: 1
     unit_of_measurement: "°C"
